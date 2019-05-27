@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Yo Blogz Is Lit Tho!🔥</h1>
+
+    <br />
+    <span class="toplink">
+        <a href="/logout">Logout</a>
+    </span>
+    <span>{{session['email']}}</span>
+    
+    {% if blogs|length == 0 %}
+    <p>No blogs yet</p>
+    {% else %}
+
+    {% for new_blog in blogs %}
+    <hr />
+    
+    <form method="POST" action="/delete-blog" style="display:inline-block;">
+        <h2><a href="/blog?id={{new_blog.id}}" method="get">{{new_blog.title}}</a></h2>
+        <p>{{new_blog.body}}</p>
+        <input type="hidden" name="blog-id" value="{{blogs.id}}"/>
+        
+    </form>
+    {% endfor %}
+
+    {% endif %}
+
+    <hr />
+    
+
+{% endblock %}

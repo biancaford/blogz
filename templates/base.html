@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <style>
+        .error {
+            color: red;
+        }
+        h1 {
+            text-align: center;
+        }
+        .toplink {
+            padding: 10px;
+        }
+        input {
+            display: block;
+        }
+        label {
+            display: block;
+        }
+        .add {
+            padding-bottom: 50px; 
+        }
+    </style>
+</head>
+<body>
+
+    <span class="toplink">
+        <a href="/">Home Page</a> 
+    </span>
+    <span class="toplink">
+        <a href="/blog">Yo Blogz🔥</a> 
+    </span>
+    <span class="toplink">
+        <a href="/newpost">Add a Blog Entry🔥</a>
+    </span>
+    <span class="toplink">
+        <a href="/login">Login🔥</a>
+    </span>
+    <span class="toplink">
+        <a href="/register">Register🔥</a>
+    </span>
+    
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category,message in messages %}
+            <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+    {% endwith %}
+    
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
